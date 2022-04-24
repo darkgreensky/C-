@@ -1,35 +1,20 @@
 #include <iostream>
 using namespace std;
-class Demo
+int f;
+class CDemo
 {
-	int id;
+private:
+	const int num;
+	int & ref;
+	int value;
 public:
-	Demo(int i)
+	CDemo(int n):num(n), ref(f), value(4)
 	{
-		id = i;
-		cout << "id = " << id << " constructed" << endl;
-	}
-	~Demo()
-	{
-		cout << "id = " << id << " destructed" << endl;
 	}
 };
-Demo d1(1);
-void Func()
-{
-	static Demo d2(2);
-	Demo d3(3);
-	cout << "func" << endl;
-}
 int main()
 {
-	Demo d4(4);
-	d4 = 6;
-	cout << "main" << endl;
-	{
-		Demo d5(5);
-	}
-	Func();
-	cout << "main ends" << endl;
+	cout << sizeof(int) << endl;
+	cout <<sizeof(CDemo) << endl;
 	return 0;
 }
