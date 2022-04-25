@@ -1,20 +1,32 @@
 #include <iostream>
 using namespace std;
-int f;
-class CDemo
+
+class CDriver;
+
+class CCar 
 {
 private:
-	const int num;
-	int & ref;
-	int value;
+	int price;
+	friend class CDriver;
 public:
-	CDemo(int n):num(n), ref(f), value(4)
+	int myDriver(CDriver & a)
 	{
+		return a.id;
 	}
 };
+
+class CDriver
+{
+private:
+	int id;
+	CCar myCar;
+	void modifyCar()
+	{
+		myCar.price += 1000;
+	}
+};
+
 int main()
 {
-	cout << sizeof(int) << endl;
-	cout <<sizeof(CDemo) << endl;
 	return 0;
 }
