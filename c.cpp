@@ -1,15 +1,47 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
+class CBase 
+{
+private: int nPrivate;
+public: int nPublic;
+protected: int nProtected;
+public:
+	void set(int t)
+	{
+		nPrivate = t;
+	}
+	void print()
+	{
+		cout << "nPrivate: " << nPrivate << endl;
+	}
+	CBase()
+	{
+		nPublic = 1;
+	}
+};
+
+class CDerived:public CBase
+{
+public:
+	void AccessBase()
+	{
+		// nPublic = 2;
+		// nPrivate = 1;
+		set(10);
+		print();
+		// nProtected = 1;
+		// CBase f;
+		// f.nPublic = 1;
+	}
+};
+
 int main()
 {
-	string s1, s2;
-	s1 = "string";
-	s2 = s1;
-	s2[0] = 't';
-	cout << s1 << endl;
-	cout << s2 << endl;
+	CBase b;
+	CDerived d;
+	d.AccessBase();
+	//cout << d.nPublic << endl;
 	return 0;
 }
